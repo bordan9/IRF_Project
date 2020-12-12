@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="webshop_database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Megrendelo">
+          <Key>
+            <PropertyRef Name="Login_id" />
+          </Key>
+          <Property Name="Login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vezeteknev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Keresztnev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rendeles">
+          <Key>
+            <PropertyRef Name="Rendeles_id" />
+          </Key>
+          <Property Name="Rendeles_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_fk" Type="int" Nullable="false" />
+          <Property Name="Szallitas_fk" Type="int" Nullable="false" />
+          <Property Name="Szamla_fk" Type="int" Nullable="false" />
+          <Property Name="Fizetes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Datum" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rendeles_tetel">
+          <Key>
+            <PropertyRef Name="Rend_tetel_id" />
+          </Key>
+          <Property Name="Rend_tetel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Termek_fk" Type="int" Nullable="false" />
+          <Property Name="Rendeles_fk" Type="int" Nullable="false" />
+          <Property Name="Darab" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Szallitas">
+          <Key>
+            <PropertyRef Name="Szallitas_id" />
+          </Key>
+          <Property Name="Szallitas_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Varos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Utca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hazszam" Type="int" Nullable="false" />
+          <Property Name="Iranyitoszam" Type="int" Nullable="false" />
+          <Property Name="Megjegyzes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Szamla">
+          <Key>
+            <PropertyRef Name="Szamla_id" />
+          </Key>
+          <Property Name="Szamla_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vezeteknev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Keresztnev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Iranyitszam" Type="int" Nullable="false" />
+          <Property Name="Utca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hazszam" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Termek">
+          <Key>
+            <PropertyRef Name="Termek_id" />
+          </Key>
+          <Property Name="Termek_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Termek_nev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Szin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ar" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Rendeles_tetel_ToRendeles">
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="1" />
+          <End Role="Rendeles_tetel" Type="Self.Rendeles_tetel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rendeles">
+              <PropertyRef Name="Rendeles_id" />
+            </Principal>
+            <Dependent Role="Rendeles_tetel">
+              <PropertyRef Name="Rendeles_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_tetel_ToTermek">
+          <End Role="Termek" Type="Self.Termek" Multiplicity="1" />
+          <End Role="Rendeles_tetel" Type="Self.Rendeles_tetel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Termek">
+              <PropertyRef Name="Termek_id" />
+            </Principal>
+            <Dependent Role="Rendeles_tetel">
+              <PropertyRef Name="Termek_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_ToMegrendelo">
+          <End Role="Megrendelo" Type="Self.Megrendelo" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Megrendelo">
+              <PropertyRef Name="Login_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Login_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_ToSzallitas">
+          <End Role="Szallitas" Type="Self.Szallitas" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szallitas">
+              <PropertyRef Name="Szallitas_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Szallitas_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_ToSzamla">
+          <End Role="Szamla" Type="Self.Szamla" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szamla">
+              <PropertyRef Name="Szamla_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Szamla_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="webshop_database1ModelStoreContainer">
+          <EntitySet Name="Megrendelo" EntityType="Self.Megrendelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rendeles" EntityType="Self.Rendeles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rendeles_tetel" EntityType="Self.Rendeles_tetel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Szallitas" EntityType="Self.Szallitas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Szamla" EntityType="Self.Szamla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Termek" EntityType="Self.Termek" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rendeles_tetel_ToRendeles" Association="Self.FK_Rendeles_tetel_ToRendeles">
+            <End Role="Rendeles" EntitySet="Rendeles" />
+            <End Role="Rendeles_tetel" EntitySet="Rendeles_tetel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_tetel_ToTermek" Association="Self.FK_Rendeles_tetel_ToTermek">
+            <End Role="Termek" EntitySet="Termek" />
+            <End Role="Rendeles_tetel" EntitySet="Rendeles_tetel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_ToMegrendelo" Association="Self.FK_Rendeles_ToMegrendelo">
+            <End Role="Megrendelo" EntitySet="Megrendelo" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_ToSzallitas" Association="Self.FK_Rendeles_ToSzallitas">
+            <End Role="Szallitas" EntitySet="Szallitas" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_ToSzamla" Association="Self.FK_Rendeles_ToSzamla">
+            <End Role="Szamla" EntitySet="Szamla" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="webshop_database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Megrendelo">
+          <Key>
+            <PropertyRef Name="Login_id" />
+          </Key>
+          <Property Name="Login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vezeteknev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keresztnev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rendeles" Relationship="Self.FK_Rendeles_ToMegrendelo" FromRole="Megrendelo" ToRole="Rendeles" />
+        </EntityType>
+        <EntityType Name="Rendeles">
+          <Key>
+            <PropertyRef Name="Rendeles_id" />
+          </Key>
+          <Property Name="Rendeles_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_fk" Type="Int32" Nullable="false" />
+          <Property Name="Szallitas_fk" Type="Int32" Nullable="false" />
+          <Property Name="Szamla_fk" Type="Int32" Nullable="false" />
+          <Property Name="Fizetes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Megrendelo" Relationship="Self.FK_Rendeles_ToMegrendelo" FromRole="Rendeles" ToRole="Megrendelo" />
+          <NavigationProperty Name="Rendeles_tetel" Relationship="Self.FK_Rendeles_tetel_ToRendeles" FromRole="Rendeles" ToRole="Rendeles_tetel" />
+          <NavigationProperty Name="Szallitas" Relationship="Self.FK_Rendeles_ToSzallitas" FromRole="Rendeles" ToRole="Szallitas" />
+          <NavigationProperty Name="Szamla" Relationship="Self.FK_Rendeles_ToSzamla" FromRole="Rendeles" ToRole="Szamla" />
+        </EntityType>
+        <EntityType Name="Rendeles_tetel">
+          <Key>
+            <PropertyRef Name="Rend_tetel_id" />
+          </Key>
+          <Property Name="Rend_tetel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Termek_fk" Type="Int32" Nullable="false" />
+          <Property Name="Rendeles_fk" Type="Int32" Nullable="false" />
+          <Property Name="Darab" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rendeles" Relationship="Self.FK_Rendeles_tetel_ToRendeles" FromRole="Rendeles_tetel" ToRole="Rendeles" />
+          <NavigationProperty Name="Termek" Relationship="Self.FK_Rendeles_tetel_ToTermek" FromRole="Rendeles_tetel" ToRole="Termek" />
+        </EntityType>
+        <EntityType Name="Szallitas">
+          <Key>
+            <PropertyRef Name="Szallitas_id" />
+          </Key>
+          <Property Name="Szallitas_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Varos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Utca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hazszam" Type="Int32" Nullable="false" />
+          <Property Name="Iranyitoszam" Type="Int32" Nullable="false" />
+          <Property Name="Megjegyzes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rendeles" Relationship="Self.FK_Rendeles_ToSzallitas" FromRole="Szallitas" ToRole="Rendeles" />
+        </EntityType>
+        <EntityType Name="Szamla">
+          <Key>
+            <PropertyRef Name="Szamla_id" />
+          </Key>
+          <Property Name="Szamla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vezeteknev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keresztnev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Iranyitszam" Type="Int32" Nullable="false" />
+          <Property Name="Utca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hazszam" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rendeles" Relationship="Self.FK_Rendeles_ToSzamla" FromRole="Szamla" ToRole="Rendeles" />
+        </EntityType>
+        <EntityType Name="Termek">
+          <Key>
+            <PropertyRef Name="Termek_id" />
+          </Key>
+          <Property Name="Termek_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Termek_nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Szin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rendeles_tetel" Relationship="Self.FK_Rendeles_tetel_ToTermek" FromRole="Termek" ToRole="Rendeles_tetel" />
+        </EntityType>
+        <Association Name="FK_Rendeles_ToMegrendelo">
+          <End Role="Megrendelo" Type="Self.Megrendelo" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Megrendelo">
+              <PropertyRef Name="Login_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Login_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_tetel_ToRendeles">
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="1" />
+          <End Role="Rendeles_tetel" Type="Self.Rendeles_tetel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rendeles">
+              <PropertyRef Name="Rendeles_id" />
+            </Principal>
+            <Dependent Role="Rendeles_tetel">
+              <PropertyRef Name="Rendeles_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_ToSzallitas">
+          <End Role="Szallitas" Type="Self.Szallitas" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szallitas">
+              <PropertyRef Name="Szallitas_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Szallitas_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_ToSzamla">
+          <End Role="Szamla" Type="Self.Szamla" Multiplicity="1" />
+          <End Role="Rendeles" Type="Self.Rendeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szamla">
+              <PropertyRef Name="Szamla_id" />
+            </Principal>
+            <Dependent Role="Rendeles">
+              <PropertyRef Name="Szamla_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rendeles_tetel_ToTermek">
+          <End Role="Termek" Type="Self.Termek" Multiplicity="1" />
+          <End Role="Rendeles_tetel" Type="Self.Rendeles_tetel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Termek">
+              <PropertyRef Name="Termek_id" />
+            </Principal>
+            <Dependent Role="Rendeles_tetel">
+              <PropertyRef Name="Termek_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="webshop_database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Megrendelo" EntityType="Self.Megrendelo" />
+          <EntitySet Name="Rendeles" EntityType="Self.Rendeles" />
+          <EntitySet Name="Rendeles_tetel" EntityType="Self.Rendeles_tetel" />
+          <EntitySet Name="Szallitas" EntityType="Self.Szallitas" />
+          <EntitySet Name="Szamla" EntityType="Self.Szamla" />
+          <EntitySet Name="Termek" EntityType="Self.Termek" />
+          <AssociationSet Name="FK_Rendeles_ToMegrendelo" Association="Self.FK_Rendeles_ToMegrendelo">
+            <End Role="Megrendelo" EntitySet="Megrendelo" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_tetel_ToRendeles" Association="Self.FK_Rendeles_tetel_ToRendeles">
+            <End Role="Rendeles" EntitySet="Rendeles" />
+            <End Role="Rendeles_tetel" EntitySet="Rendeles_tetel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_ToSzallitas" Association="Self.FK_Rendeles_ToSzallitas">
+            <End Role="Szallitas" EntitySet="Szallitas" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_ToSzamla" Association="Self.FK_Rendeles_ToSzamla">
+            <End Role="Szamla" EntitySet="Szamla" />
+            <End Role="Rendeles" EntitySet="Rendeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rendeles_tetel_ToTermek" Association="Self.FK_Rendeles_tetel_ToTermek">
+            <End Role="Termek" EntitySet="Termek" />
+            <End Role="Rendeles_tetel" EntitySet="Rendeles_tetel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="webshop_database1ModelStoreContainer" CdmEntityContainer="webshop_database1Entities">
+          <EntitySetMapping Name="Megrendelo">
+            <EntityTypeMapping TypeName="webshop_database1Model.Megrendelo">
+              <MappingFragment StoreEntitySet="Megrendelo">
+                <ScalarProperty Name="Login_id" ColumnName="Login_id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Vezeteknev" ColumnName="Vezeteknev" />
+                <ScalarProperty Name="Keresztnev" ColumnName="Keresztnev" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rendeles">
+            <EntityTypeMapping TypeName="webshop_database1Model.Rendeles">
+              <MappingFragment StoreEntitySet="Rendeles">
+                <ScalarProperty Name="Rendeles_id" ColumnName="Rendeles_id" />
+                <ScalarProperty Name="Login_fk" ColumnName="Login_fk" />
+                <ScalarProperty Name="Szallitas_fk" ColumnName="Szallitas_fk" />
+                <ScalarProperty Name="Szamla_fk" ColumnName="Szamla_fk" />
+                <ScalarProperty Name="Fizetes" ColumnName="Fizetes" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rendeles_tetel">
+            <EntityTypeMapping TypeName="webshop_database1Model.Rendeles_tetel">
+              <MappingFragment StoreEntitySet="Rendeles_tetel">
+                <ScalarProperty Name="Rend_tetel_id" ColumnName="Rend_tetel_id" />
+                <ScalarProperty Name="Termek_fk" ColumnName="Termek_fk" />
+                <ScalarProperty Name="Rendeles_fk" ColumnName="Rendeles_fk" />
+                <ScalarProperty Name="Darab" ColumnName="Darab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Szallitas">
+            <EntityTypeMapping TypeName="webshop_database1Model.Szallitas">
+              <MappingFragment StoreEntitySet="Szallitas">
+                <ScalarProperty Name="Szallitas_id" ColumnName="Szallitas_id" />
+                <ScalarProperty Name="Varos" ColumnName="Varos" />
+                <ScalarProperty Name="Utca" ColumnName="Utca" />
+                <ScalarProperty Name="Hazszam" ColumnName="Hazszam" />
+                <ScalarProperty Name="Iranyitoszam" ColumnName="Iranyitoszam" />
+                <ScalarProperty Name="Megjegyzes" ColumnName="Megjegyzes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Szamla">
+            <EntityTypeMapping TypeName="webshop_database1Model.Szamla">
+              <MappingFragment StoreEntitySet="Szamla">
+                <ScalarProperty Name="Szamla_id" ColumnName="Szamla_id" />
+                <ScalarProperty Name="Vezeteknev" ColumnName="Vezeteknev" />
+                <ScalarProperty Name="Keresztnev" ColumnName="Keresztnev" />
+                <ScalarProperty Name="Iranyitszam" ColumnName="Iranyitszam" />
+                <ScalarProperty Name="Utca" ColumnName="Utca" />
+                <ScalarProperty Name="Hazszam" ColumnName="Hazszam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Termek">
+            <EntityTypeMapping TypeName="webshop_database1Model.Termek">
+              <MappingFragment StoreEntitySet="Termek">
+                <ScalarProperty Name="Termek_id" ColumnName="Termek_id" />
+                <ScalarProperty Name="Termek_nev" ColumnName="Termek_nev" />
+                <ScalarProperty Name="Szin" ColumnName="Szin" />
+                <ScalarProperty Name="Ar" ColumnName="Ar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

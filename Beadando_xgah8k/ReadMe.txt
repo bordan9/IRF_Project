@@ -6,6 +6,8 @@ A diagram vásárlási trendeket fogja ábrázolni a rendelési tételek alapján (x ten
 Random szám generálás segítségével véletlenszerû idõintervallumok adatait jeleníthetjük me.
 
 
-
+B,
+Az adatbázis egy fikcionális, játékforgalmazó vállalat 1 havi rendelés forgalmának adatait tartalmazza.
+(Megrendelo, Rendeles, Rendeles_tetel, Szallitas, Szamla, Termek)
 
 
