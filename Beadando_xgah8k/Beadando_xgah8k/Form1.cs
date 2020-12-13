@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Beadando_xgah8k
 {
@@ -20,10 +21,10 @@ namespace Beadando_xgah8k
             InitializeComponent();
             rendeles = context.Rendeles.ToList();
 
-            Adatrendezes();
+            Diagramfeltoltes();
         }
 
-        public void Adatrendezes()
+        public void Diagramfeltoltes()
         {
             var szurt = from x in rendeles
                         where x.Datum.Month == 12
@@ -34,8 +35,23 @@ namespace Beadando_xgah8k
                             darabszam = Datumok.Count()
                         };
 
-
             dataGridView1.DataSource = szurt.ToList();
+
+            chart1.DataSource = szurt.ToList();
+
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "napok";
+            series.YValueMembers = "darabszam";
+            series.BorderWidth = 3;
+
+            var legend = chart1.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chart1.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
         }
     }
 }

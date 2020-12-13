@@ -44,7 +44,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(555, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(389, 530);
             this.dataGridView1.TabIndex = 0;
             // 
             // chart1
@@ -53,13 +53,13 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(573, 12);
+            this.chart1.Location = new System.Drawing.Point(407, 14);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(580, 426);
+            this.chart1.Size = new System.Drawing.Size(873, 530);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 450);
+            this.ClientSize = new System.Drawing.Size(1293, 613);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
