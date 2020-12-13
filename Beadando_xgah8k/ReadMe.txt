@@ -1,10 +1,6 @@
 Tételkód: BACA
 
-A projekt egy játékforgalmazó weboldal 2020. decemberi eladásairól készít kimutatást.
-Az adatbázis tartalmazni fogja a webshopon árult termékeket, megrendelõ adatait, rendelési tételeket, kosár tartalmát.
-A diagram vásárlási trendeket fogja ábrázolni a rendelési tételek alapján (x tengely: dátum, y tengely: eladási mennyiség).
-Random szám generálás segítségével véletlenszerû idõintervallumok adatait jeleníthetjük me.
-
+A projekt egy fikcionális játékforgalmazó weboldal 2020. decemberi eladásairól készít kimutatást.
 
 1. B,
 Az adatbázis egy fikcionális, játékforgalmazó vállalat 1 havi rendelés forgalmának adatait tartalmazza.
@@ -13,7 +9,16 @@ A projekthez a Rendeles tábla adatai lesznek felhasználva.
 A tábla tartalma: Rendeles_id, Login_fk, Szallitas_fk, Szamla_fk, Fizetes, Datum.
 
 2. A,
-A Rendeles tábla adataiból, az Adatrendezes() függvényben található LINQ lekérdezés segítségével kaptam meg azt, hogy december egyes napjain hány tranzakció történt.
+A Rendeles tábla adataiból, az Diagramfeltoltes() függvényben található LINQ lekérdezés segítségével kaptam meg azt, hogy december egyes napjain hány tranzakció történt.
+A véletlen nap adatának meghatározásánál is LINQ lekérdezést használtam.
+
+3. C,
+A vonaldiagram december rendelés forgalmának alakulását ábrázolja.
+x tengely: eltelt napok
+y tengely: egy napon hány trancakció történt
+
+4. A,
+Véletlenszám generálás segítségével lehet információt szerezni egy véletlenszerû napon beérkezõ rendelések számáról.
 
 
 
