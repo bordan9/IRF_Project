@@ -33,8 +33,8 @@ namespace Beadando_xgah8k
                         group x by x.Datum into Datumok
                         select new
                         {
-                            napok = Datumok.Key.Date,
-                            darabszam = Datumok.Count()
+                            Napok = Datumok.Key.Date,
+                            Darabszám = Datumok.Count()
                         };
 
             dataGridView1.DataSource = szurt.ToList();
@@ -43,9 +43,10 @@ namespace Beadando_xgah8k
 
             var series = chart1.Series[0];
             series.ChartType = SeriesChartType.Line;
-            series.XValueMember = "napok";
-            series.YValueMembers = "darabszam";
+            series.XValueMember = "Napok";
+            series.YValueMembers = "Darabszám";
             series.BorderWidth = 3;
+            series.Color = Color.Orange;
 
             var legend = chart1.Legends[0];
             legend.Enabled = false;
@@ -56,7 +57,7 @@ namespace Beadando_xgah8k
             chartArea.AxisY.IsStartedFromZero = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void designedButton1_Click(object sender, EventArgs e)
         {
             int nap = rng.Next(1, 30);
             int honap = 12;
@@ -77,6 +78,17 @@ namespace Beadando_xgah8k
                              select y.darabszam).First().ToString();
 
             disabledTextBox2.Text = darabszam;
+        }
+
+        private void designedButton2_Click(object sender, EventArgs e)
+        {
+            disabledTextBox1.Clear();
+            disabledTextBox2.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void label1_Click(object sender, EventArgs e)
