@@ -62,7 +62,7 @@ namespace Beadando_xgah8k
             int honap = 12;
             int ev = 2020;
 
-            textBox1.Text = ev + "." + honap + "." + nap;
+            disabledTextBox1.Text = ev + "." + honap + "." + nap;
 
             var szurt = from x in rendeles
                         where x.Datum.Day == nap
@@ -73,9 +73,10 @@ namespace Beadando_xgah8k
                             darabszam = Datumok.Count()
                         };
 
-            textBox2.Text = (from y in szurt
+            var darabszam = (from y in szurt
                              select y.darabszam).First().ToString();
 
+            disabledTextBox2.Text = darabszam;
         }
 
         private void label1_Click(object sender, EventArgs e)
