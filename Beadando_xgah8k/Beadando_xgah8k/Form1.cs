@@ -86,14 +86,9 @@ namespace Beadando_xgah8k
             disabledTextBox2.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void designedButton3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

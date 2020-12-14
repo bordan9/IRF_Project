@@ -13,12 +13,12 @@ A Rendeles tábla adataiból, az Diagramfeltoltes() függvényben található LINQ lek
 A véletlen nap adatának meghatározásánál is LINQ lekérdezést használtam.
 
 3. C,
-A vonaldiagram december rendelés forgalmának alakulását ábrázolja.
+A vonaldiagram december hónap rendelés forgalmának alakulását ábrázolja.
 x tengely: eltelt napok
 y tengely: egy napon hány trancakció történt
 
 4. A,
-Véletlenszám generálás segítségével lehet információt szerezni egy véletlenszerû napon beérkezõ rendelések számáról.
+Véletlenszám generálás segítségével oldottam meg a funkciót amellyel lehet információt szerezni egy véletlenszerû napon beérkezõ rendelések számáról.
 
 
 

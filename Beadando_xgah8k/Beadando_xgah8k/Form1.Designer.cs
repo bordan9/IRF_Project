@@ -35,6 +35,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
+            this.designedButton3 = new Beadando_xgah8k.DesignedButton();
             this.designedLabel3 = new Beadando_xgah8k.DesignedLabel();
             this.designedLabel2 = new Beadando_xgah8k.DesignedLabel();
             this.designedLabel1 = new Beadando_xgah8k.DesignedLabel();
@@ -53,7 +54,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(389, 620);
+            this.dataGridView1.Size = new System.Drawing.Size(389, 554);
             this.dataGridView1.TabIndex = 0;
             // 
             // chart1
@@ -81,6 +82,17 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 11;
+            // 
+            // designedButton3
+            // 
+            this.designedButton3.BackColor = System.Drawing.Color.LightSalmon;
+            this.designedButton3.Location = new System.Drawing.Point(1137, 584);
+            this.designedButton3.Name = "designedButton3";
+            this.designedButton3.Size = new System.Drawing.Size(100, 40);
+            this.designedButton3.TabIndex = 17;
+            this.designedButton3.Text = "Kilépés";
+            this.designedButton3.UseVisualStyleBackColor = false;
+            this.designedButton3.Click += new System.EventHandler(this.designedButton3_Click);
             // 
             // designedLabel3
             // 
@@ -162,6 +174,7 @@
             this.BackgroundImage = global::Beadando_xgah8k.Properties.Resources.backimg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1378, 644);
+            this.Controls.Add(this.designedButton3);
             this.Controls.Add(this.designedLabel3);
             this.Controls.Add(this.designedLabel2);
             this.Controls.Add(this.designedLabel1);
@@ -194,6 +207,7 @@
         private DesignedLabel designedLabel1;
         private DesignedLabel designedLabel2;
         private DesignedLabel designedLabel3;
+        private DesignedButton designedButton3;
     }
 }
 
