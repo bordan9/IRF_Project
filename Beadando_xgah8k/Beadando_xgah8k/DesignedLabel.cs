@@ -14,6 +14,7 @@ namespace Beadando_xgah8k
         public DesignedLabel()
         {
             this.Font = new Font("Arial", 10, FontStyle.Bold);
+            this.BackColor = Color.Transparent;
         }
     }
 }

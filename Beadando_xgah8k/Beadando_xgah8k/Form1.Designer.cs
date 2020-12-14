@@ -31,16 +31,17 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
+            this.designedLabel3 = new Beadando_xgah8k.DesignedLabel();
             this.designedLabel2 = new Beadando_xgah8k.DesignedLabel();
             this.designedLabel1 = new Beadando_xgah8k.DesignedLabel();
             this.designedButton2 = new Beadando_xgah8k.DesignedButton();
             this.designedButton1 = new Beadando_xgah8k.DesignedButton();
             this.disabledTextBox2 = new Beadando_xgah8k.DisabledTextBox();
             this.disabledTextBox1 = new Beadando_xgah8k.DisabledTextBox();
-            this.designedLabel3 = new Beadando_xgah8k.DesignedLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -81,11 +82,23 @@
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 11;
             // 
+            // designedLabel3
+            // 
+            this.designedLabel3.AutoSize = true;
+            this.designedLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.designedLabel3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.designedLabel3.Location = new System.Drawing.Point(382, 591);
+            this.designedLabel3.Name = "designedLabel3";
+            this.designedLabel3.Size = new System.Drawing.Size(197, 24);
+            this.designedLabel3.TabIndex = 16;
+            this.designedLabel3.Text = "Tranzakciók száma:";
+            // 
             // designedLabel2
             // 
             this.designedLabel2.AutoSize = true;
+            this.designedLabel2.BackColor = System.Drawing.Color.Transparent;
             this.designedLabel2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.designedLabel2.Location = new System.Drawing.Point(66, 590);
+            this.designedLabel2.Location = new System.Drawing.Point(34, 591);
             this.designedLabel2.Name = "designedLabel2";
             this.designedLabel2.Size = new System.Drawing.Size(78, 24);
             this.designedLabel2.TabIndex = 15;
@@ -94,8 +107,9 @@
             // designedLabel1
             // 
             this.designedLabel1.AutoSize = true;
+            this.designedLabel1.BackColor = System.Drawing.Color.Transparent;
             this.designedLabel1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.designedLabel1.Location = new System.Drawing.Point(12, 20);
+            this.designedLabel1.Location = new System.Drawing.Point(34, 20);
             this.designedLabel1.Name = "designedLabel1";
             this.designedLabel1.Size = new System.Drawing.Size(392, 24);
             this.designedLabel1.TabIndex = 14;
@@ -104,7 +118,7 @@
             // designedButton2
             // 
             this.designedButton2.BackColor = System.Drawing.Color.LightSalmon;
-            this.designedButton2.Location = new System.Drawing.Point(775, 584);
+            this.designedButton2.Location = new System.Drawing.Point(701, 584);
             this.designedButton2.Name = "designedButton2";
             this.designedButton2.Size = new System.Drawing.Size(100, 40);
             this.designedButton2.TabIndex = 10;
@@ -115,7 +129,7 @@
             // designedButton1
             // 
             this.designedButton1.BackColor = System.Drawing.Color.LightSalmon;
-            this.designedButton1.Location = new System.Drawing.Point(256, 584);
+            this.designedButton1.Location = new System.Drawing.Point(224, 584);
             this.designedButton1.Name = "designedButton1";
             this.designedButton1.Size = new System.Drawing.Size(100, 40);
             this.designedButton1.TabIndex = 9;
@@ -127,7 +141,7 @@
             // 
             this.disabledTextBox2.BackColor = System.Drawing.Color.White;
             this.disabledTextBox2.Enabled = false;
-            this.disabledTextBox2.Location = new System.Drawing.Point(669, 591);
+            this.disabledTextBox2.Location = new System.Drawing.Point(595, 591);
             this.disabledTextBox2.Name = "disabledTextBox2";
             this.disabledTextBox2.Size = new System.Drawing.Size(100, 26);
             this.disabledTextBox2.TabIndex = 7;
@@ -136,25 +150,17 @@
             // 
             this.disabledTextBox1.BackColor = System.Drawing.Color.White;
             this.disabledTextBox1.Enabled = false;
-            this.disabledTextBox1.Location = new System.Drawing.Point(150, 591);
+            this.disabledTextBox1.Location = new System.Drawing.Point(118, 591);
             this.disabledTextBox1.Name = "disabledTextBox1";
             this.disabledTextBox1.Size = new System.Drawing.Size(100, 26);
             this.disabledTextBox1.TabIndex = 6;
-            // 
-            // designedLabel3
-            // 
-            this.designedLabel3.AutoSize = true;
-            this.designedLabel3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.designedLabel3.Location = new System.Drawing.Point(457, 590);
-            this.designedLabel3.Name = "designedLabel3";
-            this.designedLabel3.Size = new System.Drawing.Size(197, 24);
-            this.designedLabel3.TabIndex = 16;
-            this.designedLabel3.Text = "Tranzakciók száma:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Beadando_xgah8k.Properties.Resources.backimg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1378, 644);
             this.Controls.Add(this.designedLabel3);
             this.Controls.Add(this.designedLabel2);
@@ -166,8 +172,9 @@
             this.Controls.Add(this.disabledTextBox2);
             this.Controls.Add(this.disabledTextBox1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Webshop Data";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
