@@ -9,7 +9,7 @@ A projekthez a Rendeles tábla adatai lesznek felhasználva.
 A tábla tartalma: Rendeles_id, Login_fk, Szallitas_fk, Szamla_fk, Fizetes, Datum.
 
 2. A,
-A Rendeles tábla adataiból, az Diagramfeltoltes() függvényben található LINQ lekérdezés segítségével kaptam meg azt, hogy december egyes napjain hány tranzakció történt.
+A Rendeles tábla adataiból, a Diagramfeltoltes() függvényben található LINQ lekérdezés segítségével kaptam meg azt, hogy december egyes napjain hány tranzakció történt.
 A véletlen nap adatának meghatározásánál is LINQ lekérdezést használtam.
 
 3. C,
@@ -18,7 +18,7 @@ x tengely: eltelt napok
 y tengely: egy napon hány trancakció történt
 
 4. A,
-Véletlenszám generálás segítségével oldottam meg a funkciót amellyel lehet információt szerezni egy véletlenszerû napon beérkezõ rendelések számáról.
+Véletlenszám generálás segítségével oldottam meg a funkciót, amellyel információt lehet szerezni egy véletlenszerû napon beérkezõ rendelések számáról.
 
 
 
